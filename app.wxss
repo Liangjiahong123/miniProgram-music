@@ -1,0 +1,7 @@
+page {
+  background-color: #fafafa;
+}
+
+view {
+  box-sizing: border-box;
+}
