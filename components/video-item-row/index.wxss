@@ -1,1 +1,43 @@
-/* components/video-item-row/index.wxss */
+.video-item {
+  display: flex;
+  align-items: center;
+  margin-top: 30rpx;
+}
+.album {
+  display: flex;
+  position: relative;
+}
+.album .cover {
+  width: 250rpx;
+}
+.play-count {
+  position: absolute;
+  color: #fff;
+  right: 10rpx;
+  bottom: 6rpx;
+  display: flex;
+  align-items: center;
+}
+.play-count .icon {
+  width: 26rpx;
+  margin-right: 6rpx;
+}
+.play-count .count {
+  font-size: 24rpx;
+}
+.content {
+  margin-left: 16rpx;
+}
+.content .desc {
+  font-size: 26rpx;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+.content .artist {
+  margin-top: 6rpx;
+  font-size: 22rpx;
+  color: #999;
+}

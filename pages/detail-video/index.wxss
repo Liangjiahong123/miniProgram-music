@@ -1,1 +1,32 @@
-/* pages/detail-video/index.wxss */
+.video {
+  width: 100%;
+  overflow: hidden;
+}
+.content {
+  margin-top: 20rpx;
+  padding: 0 28rpx;
+  height: calc(100% - 250px);
+}
+.video-info {
+  display: flex;
+  flex-direction: column;
+}
+.video-info .name {
+  font-size: 34rpx;
+  font-weight: bold;
+}
+.video-info .item:not(:last-child) {
+  margin-bottom: 12rpx;
+}
+.video-info .artist {
+  color: #999;
+  font-size: 24rpx;
+}
+.video-info .detail {
+  font-size: 24rpx;
+  color: #999;
+}
+
+.related-video .title {
+  margin-top: 50rpx;
+}
