@@ -1,3 +1,6 @@
 {
-  "usingComponents": {}
+  "usingComponents": {
+    "title-view": "/components/title-view/index",
+    "van-search": "@vant/weapp/search/index"
+  }
 }
