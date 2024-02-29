@@ -1,5 +1,6 @@
-import { getMusicBannerApi } from '../../api/music';
-import { getTerminalType } from '../../utils/helpers';
+import { getMusicBannerApi, getRecommendSongApi } from '../../api/music';
+import { getTerminalType, querySelector } from '../../utils/helpers';
+import throttle from '../../utils/throttle';
 
 const TERMINAL_TYPE = {
   pc: 0,
@@ -7,16 +8,19 @@ const TERMINAL_TYPE = {
   ios: 2,
   ipad: 3
 };
+const querySelectThrottle = throttle(querySelector, 100);
 
 Page({
   data: {
     searchKey: '',
     bannerList: [],
-    bannerHeight: ''
+    bannerHeight: 150,
+    recommendSongs: []
   },
 
   onLoad() {
     this.fetchMusicBanner();
+    this.fetchRecommendSong();
   },
 
   handleSearchFocus() {
@@ -30,5 +34,15 @@ Page({
     const type = TERMINAL_TYPE[terminal];
     const { banners = [] } = await getMusicBannerApi(type);
     this.setData({ bannerList: banners });
+  },
+
+  async onBannerImgLoaded() {
+    const [rect] = await querySelectThrottle('.banner-pic');
+    this.setData({ bannerHeight: rect.height });
+  },
+
+  async fetchRecommendSong() {
+    const { playlist } = await getRecommendSongApi(3778678);
+    this.setData({ recommendSongs: playlist.tracks.slice(0, 6) });
   }
 });

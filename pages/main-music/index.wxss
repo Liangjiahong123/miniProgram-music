@@ -12,7 +12,7 @@ page {
   border-radius: 8rpx;
   overflow: hidden;
 }
-.banner-list .pic {
+.banner-list .banner-pic {
   width: 100%;
 }
 .recommend-list {

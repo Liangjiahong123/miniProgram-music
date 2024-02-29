@@ -10,3 +10,13 @@ export function getTerminalType() {
     ? 'ipad'
     : 'android';
 }
+
+export function querySelector(selector) {
+  return new Promise(resolve => {
+    const query = wx.createSelectorQuery();
+    query.select('.banner-pic').boundingClientRect();
+    query.exec(res => {
+      resolve(res);
+    });
+  });
+}
