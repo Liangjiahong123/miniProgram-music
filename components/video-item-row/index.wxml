@@ -1,2 +1,16 @@
-<!--components/video-item-row/index.wxml-->
-<text>components/video-item-row/index.wxml</text>
+<wxs src="/utils/format.wxs" module="fmt" />
+
+<view class="video-item" bind:tap="handleNavToDetail">
+  <view class="album">
+    <image class="cover" src="{{videoItem.cover}}" mode="widthFix" />
+    <view class="play-count">
+      <image class="icon" src="/assets/images/icons/play_icon.png" mode="widthFix" />
+      <text class="count">{{fmt.formatPlayCount(videoItem.playCount)}}</text>
+    </view>
+  </view>
+  <view class="content">
+    <view class="desc" wx:if="{{videoItem.mv.desc}}">{{videoItem.mv.desc}}</view>
+    <view class="desc" wx:else="">暂无介绍</view>
+    <view class="artist">{{videoItem.artistName}}</view>
+  </view>
+</view>

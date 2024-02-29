@@ -19,7 +19,7 @@ Page({
 
   // 获取视频列表
   async fetchVideoList() {
-    const { data = [], hasMore } = await getVideoListApi(this.data.offest);
+    const { data = [], hasMore } = await getVideoListApi(20, this.data.offest);
     const newList = [...this.data.videoList, ...data];
     this.setData({ videoList: newList });
     this.data.offest = this.data.videoList.length;

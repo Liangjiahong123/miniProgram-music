@@ -11,7 +11,7 @@
         {
           "name": "视频详情",
           "pathName": "pages/detail-video/index",
-          "query": "id=14694312",
+          "query": "id=14544676",
           "launchMode": "default",
           "scene": null
         },

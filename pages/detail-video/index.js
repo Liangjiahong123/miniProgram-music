@@ -1,23 +1,32 @@
-import { getVideoDetail, getVideoUrl } from '../../api/video';
+import { getVideoDetailApi, getVideoUrlApi, getVideoListApi } from '../../api/video';
 Page({
   data: {
+    id: '',
     info: {},
-    url: ''
+    url: '',
+    relatedVideos: []
   },
 
   onLoad(options) {
-    const videoId = options.id;
-    this.fetchVideoDetail(videoId);
-    this.fetchVideoUrl(videoId);
+    this.data.id = options.id;
+
+    this.fetchVideoUrl();
+    this.fetchVideoDetail();
+    this.fetchRelevantVideo();
   },
 
-  async fetchVideoDetail(id) {
-    const { data = {} } = await getVideoDetail(id);
+  async fetchVideoDetail() {
+    const { data = {} } = await getVideoDetailApi(this.data.id);
     this.setData({ info: data });
   },
 
-  async fetchVideoUrl(id, r) {
-    const { data = {} } = await getVideoUrl(id, r);
+  async fetchVideoUrl() {
+    const { data = {} } = await getVideoUrlApi(this.data.id);
     this.setData({ url: data.url });
+  },
+
+  async fetchRelevantVideo() {
+    const { data = [] } = await getVideoListApi(10);
+    this.setData({ relatedVideos: data });
   }
 });
