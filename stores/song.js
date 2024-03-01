@@ -1,6 +1,6 @@
 import { observable, action } from 'mobx-miniprogram';
 import { getRecommendSongApi } from '../api/music';
-import { getRandomNum } from '../utils/helpers';
+import { getRandomNum, isNotEmptyObj } from '../utils/helpers';
 
 const rankingIdsMap = {
   newRankSongs: 3779629,
@@ -9,21 +9,17 @@ const rankingIdsMap = {
   recommendRankSongs: 3778678
 };
 
-export const songStore = observable({
+export default observable({
   recommendRankSongs: {},
   newRankSongs: {},
   originRankSongs: {},
   soarRankSongs: {},
 
-  get getAllRecommendSongs() {
-    return this.recommendRankSongs.tracks || [];
-  },
-
   get getPeakRankData() {
     return {
-      newRanks: this.newRankSongs,
-      originRanks: this.originRankSongs,
-      soarRanks: this.soarRankSongs
+      newRankSongs: this.newRankSongs,
+      originRankSongs: this.originRankSongs,
+      soarRankSongs: this.soarRankSongs
     };
   },
 
@@ -33,6 +29,14 @@ export const songStore = observable({
     const random = getRandomNum(6, recLength);
     const recommendSongs = this.recommendRankSongs.tracks.slice(random - 6, random);
     return recommendSongs;
+  },
+
+  get getShowRanks() {
+    return (
+      isNotEmptyObj(this.newRankSongs) ||
+      isNotEmptyObj(this.originRankSongs) ||
+      isNotEmptyObj(this.soarRankSongs)
+    );
   },
 
   fetchRankSongs: action(function () {

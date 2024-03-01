@@ -1,6 +1,6 @@
 <wxs src="/utils/format.wxs" module="fmt"></wxs>
 
-<view class="ranking-item">
+<view class="ranking-item" bind:tap="handleTapRankItem">
   <view class="left">
     <view class="rank-name">{{rankItem.name}}</view>
     <view class="rank-list">

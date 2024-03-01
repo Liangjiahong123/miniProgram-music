@@ -24,3 +24,7 @@ export function querySelector(selector) {
 export function getRandomNum(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+export function isNotEmptyObj(obj) {
+  return Object.keys(obj).length > 0;
+}
