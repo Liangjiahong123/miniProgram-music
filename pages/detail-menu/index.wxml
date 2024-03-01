@@ -1,2 +1,10 @@
-<!--pages/detail-menu/index.wxml-->
-<text>pages/detail-menu/index.wxml</text>
+<view class="all-song-menu">
+  <view wx:for="{{songMenus}}" wx:key="cat" class="cat">
+    <title-view title="{{item.cat}}" hasMore="{{false}}" />
+    <view class="list">
+      <block wx:for="{{item.playlists}}" wx:key="id" wx:for-item="song">
+        <song-item-col class="item" songItem="{{song}}" />
+      </block>
+    </view>
+  </view>
+</view>

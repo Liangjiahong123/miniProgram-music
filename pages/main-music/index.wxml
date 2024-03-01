@@ -8,11 +8,11 @@
   </block>
 </swiper>
 <!-- 歌曲推荐 -->
-<view class="song-recommend" wx:if="{{recommendSongs.length}}">
+<view class="song-recommend" wx:if="{{getRandomRecSongs.length}}">
   <title-view title="歌曲推荐" bind:moreclick="handleNavToMoreSong" />
 
   <view class="song-list">
-    <block wx:for="{{recommendSongs}}" wx:key="id">
+    <block wx:for="{{getRandomRecSongs}}" wx:key="id">
       <song-item-row songItem="{{item}}" />
     </block>
   </view>
@@ -21,3 +21,12 @@
 <song-menu wx:if="{{hotSongMenu.length}}" songData="{{hotSongMenu}}" title="热门歌单" />
 <!-- 推荐歌单 -->
 <song-menu wx:if="{{recSongMenu.length}}" songData="{{recSongMenu}}" title="推荐歌单" />
+
+<view class="ranking">
+  <title-view title="巅峰榜" hasMore="{{false}}" />
+  <view class="ranking-list">
+    <block wx:for="{{getPeakRankData}}" wx:key="id">
+      <rank-item rankItem="{{item}}" key="{{index}}" />
+    </block>
+  </view>
+</view>

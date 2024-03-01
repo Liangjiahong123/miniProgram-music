@@ -4,7 +4,7 @@ Page({
   onLoad() {
     this.storeBindings = createStoreBindings(this, {
       store: songStore,
-      fields: ['getRecommendSongs']
+      fields: ['getAllRecommendSongs']
     });
   }
 });
