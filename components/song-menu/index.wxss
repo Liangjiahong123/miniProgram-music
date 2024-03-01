@@ -1,0 +1,13 @@
+.song-list .song-menu {
+  white-space: nowrap;
+  margin-top: 20rpx;
+  margin-left: -24rpx;
+}
+.song-menu .item {
+  display: inline-block;
+  width: 220rpx;
+  margin-left: 24rpx;
+}
+.song-menu .item:last-child {
+  margin-right: 24rpx;
+}

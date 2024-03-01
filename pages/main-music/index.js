@@ -1,5 +1,5 @@
 import { createStoreBindings } from 'mobx-miniprogram-bindings';
-import { getMusicBannerApi, getRecommendSongApi } from '../../api/music';
+import { getMusicBannerApi, getRecommendSongApi, getSongMenuApi } from '../../api/music';
 import { getTerminalType, querySelector, getRandomNum } from '../../utils/helpers';
 import { songStore } from '../../stores/song';
 import throttle from '../../utils/throttle';
@@ -17,12 +17,16 @@ Page({
     searchKey: '',
     bannerList: [],
     bannerHeight: 150,
-    recommendSongs: []
+    recommendSongs: [],
+    hotSongMenu: [],
+    recSongMenu: []
   },
 
   onLoad() {
     this.fetchMusicBanner();
     this.fetchRecommendSong();
+    this.fetchHotSongMenu();
+    this.fetchRecSongMenu();
 
     this.storeBindings = createStoreBindings(this, {
       store: songStore, // 数据源(将store中的某些字段、方法绑定到当前页面中)
@@ -46,16 +50,16 @@ Page({
     });
   },
 
+  async onBannerImgLoaded() {
+    const [rect] = await querySelectThrottle('.banner-pic');
+    this.setData({ bannerHeight: rect.height });
+  },
+
   async fetchMusicBanner() {
     const terminal = getTerminalType();
     const type = TERMINAL_TYPE[terminal];
     const { banners = [] } = await getMusicBannerApi(type);
     this.setData({ bannerList: banners });
-  },
-
-  async onBannerImgLoaded() {
-    const [rect] = await querySelectThrottle('.banner-pic');
-    this.setData({ bannerHeight: rect.height });
   },
 
   async fetchRecommendSong() {
@@ -64,5 +68,17 @@ Page({
     const recommendSongs = playlist.tracks.slice(random - 6, random);
     this.setData({ recommendSongs });
     this.setRecommendSongs(playlist.tracks);
+  },
+
+  async fetchHotSongMenu() {
+    const { playlists } = await getSongMenuApi();
+    const hotSongMenu = playlists;
+    this.setData({ hotSongMenu });
+  },
+
+  async fetchRecSongMenu() {
+    const { playlists } = await getSongMenuApi('华语');
+    const recSongMenu = playlists;
+    this.setData({ recSongMenu });
   }
 });

@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "title-view": "/components/title-view/index",
+    "song-item-col": "/components/song-item-col/index"
+  }
+}

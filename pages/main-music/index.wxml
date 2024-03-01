@@ -1,5 +1,5 @@
 <van-search bind:focus="handleSearchFocus" value="{{ searchKey }}" shape="round" background="#fafafa" placeholder="搜索你喜欢的歌曲" />
-
+<!-- banner -->
 <swiper class="banner-list" style="height: {{bannerHeight}}px;" wx:if="{{bannerList.length}}" indicator-dots autoplay circular>
   <block wx:for="{{bannerList}}" wx:key="bannerId">
     <swiper-item class="item">
@@ -7,13 +7,17 @@
     </swiper-item>
   </block>
 </swiper>
-
-<view class="recommend-list">
+<!-- 歌曲推荐 -->
+<view class="song-recommend" wx:if="{{recommendSongs.length}}">
   <title-view title="歌曲推荐" bind:moreclick="handleNavToMoreSong" />
 
-  <view class="song-list" wx:if="{{recommendSongs.length}}">
+  <view class="song-list">
     <block wx:for="{{recommendSongs}}" wx:key="id">
-      <rcm-song-item songItem="{{item}}" />
+      <song-item-row songItem="{{item}}" />
     </block>
   </view>
 </view>
+<!-- 热门歌单 -->
+<song-menu wx:if="{{hotSongMenu.length}}" songData="{{hotSongMenu}}" title="热门歌单" />
+<!-- 推荐歌单 -->
+<song-menu wx:if="{{recSongMenu.length}}" songData="{{recSongMenu}}" title="推荐歌单" />

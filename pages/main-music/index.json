@@ -1,7 +1,8 @@
 {
   "usingComponents": {
     "title-view": "/components/title-view/index",
-    "rcm-song-item": "/components/rcm-song-item/index",
+    "song-item-row": "/components/song-item-row/index",
+    "song-menu": "/components/song-menu/index",
     "van-search": "@vant/weapp/search/index"
   }
 }

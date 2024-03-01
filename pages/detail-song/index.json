@@ -1,5 +1,5 @@
 {
   "usingComponents": {
-    "rcm-song-item": "/components/rcm-song-item/index"
+    "song-item-row": "/components/song-item-row/index"
   }
 }
