@@ -3,7 +3,8 @@
     "pages/main-music/index",
     "pages/main-video/index",
     "pages/detail-video/index",
-    "pages/detail-search/index"
+    "pages/detail-search/index",
+    "pages/detail-song/index"
   ],
   "tabBar": {
     "list": [

@@ -1,4 +1,4 @@
-<view class="rcm-song-item">
+<view class="rcm-song-item" bind:tap="handleSongItemTap">
   <image class="pic" src="{{songItem.al.picUrl}}" mode="widthFix" />
   <view class="song-info">
     <view class="name">{{songItem.al.name}}</view>

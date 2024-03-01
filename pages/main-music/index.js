@@ -1,5 +1,7 @@
+import { createStoreBindings } from 'mobx-miniprogram-bindings';
 import { getMusicBannerApi, getRecommendSongApi } from '../../api/music';
 import { getTerminalType, querySelector, getRandomNum } from '../../utils/helpers';
+import { songStore } from '../../stores/song';
 import throttle from '../../utils/throttle';
 
 const TERMINAL_TYPE = {
@@ -21,11 +23,26 @@ Page({
   onLoad() {
     this.fetchMusicBanner();
     this.fetchRecommendSong();
+
+    this.storeBindings = createStoreBindings(this, {
+      store: songStore, // 数据源(将store中的某些字段、方法绑定到当前页面中)
+      actions: ['setRecommendSongs'] // 将哪些方法绑定到此页面中
+    });
+  },
+
+  onUnload() {
+    this.storeBindings.destroyStoreBindings();
   },
 
   handleSearchFocus() {
     wx.navigateTo({
       url: `/pages/detail-search/index?key=${this.data.searchKey}`
+    });
+  },
+
+  handleNavToMoreSong() {
+    wx.navigateTo({
+      url: '/pages/detail-song/index'
     });
   },
 
@@ -44,6 +61,8 @@ Page({
   async fetchRecommendSong() {
     const { playlist } = await getRecommendSongApi(3778678);
     const random = getRandomNum(6, playlist.tracks.length);
-    this.setData({ recommendSongs: playlist.tracks.slice(random - 6, random) });
+    const recommendSongs = playlist.tracks.slice(random - 6, random);
+    this.setData({ recommendSongs });
+    this.setRecommendSongs(playlist.tracks);
   }
 });

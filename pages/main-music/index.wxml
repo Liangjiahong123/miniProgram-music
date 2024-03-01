@@ -9,7 +9,7 @@
 </swiper>
 
 <view class="recommend-list">
-  <title-view title="歌曲推荐" />
+  <title-view title="歌曲推荐" bind:moreclick="handleNavToMoreSong" />
 
   <view class="song-list" wx:if="{{recommendSongs.length}}">
     <block wx:for="{{recommendSongs}}" wx:key="id">
