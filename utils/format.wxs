@@ -27,6 +27,7 @@ function formatPlayTime(time) {
 
   return padZero(minute) + ':' + padZero(sceond);
 }
+
 // 定义的内容必须导出才能被使用，而且必须使用commonJs导出
 module.exports = {
   formatPlayCount: formatPlayCount,
