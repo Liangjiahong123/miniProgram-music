@@ -1,0 +1,35 @@
+.rcm-song-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+}
+.pic {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 16rpx;
+  flex-shrink: 0;
+}
+.song-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-left: 16rpx;
+}
+.song-info .name {
+  font-size: 32rpx;
+  color: #555;
+}
+.song-info .artist {
+  display: flex;
+  align-items: center;
+  margin-top: 10rpx;
+  font-size: 24rpx;
+  color: #999;
+  white-space: nowrap;
+}
+.song-info .alia {
+  max-width: 350rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}

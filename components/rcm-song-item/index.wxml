@@ -1,0 +1,13 @@
+<view class="rcm-song-item">
+  <image class="pic" src="{{songItem.al.picUrl}}" mode="widthFix" />
+  <view class="song-info">
+    <view class="name">{{songItem.al.name}}</view>
+    <view class="artist">
+      <block wx:for="{{songItem.ar}}" wx:key="id">
+        <text decode>{{item.name}}&nbsp;</text>
+      </block>
+      <text class="alia" wx:if="{{songItem.alia.length}}">- {{songItem.alia[0]}}{{songItem.alia[0]}}</text>
+    </view>
+  </view>
+  <van-icon name="arrow" color="#999" size="16px" />
+</view>

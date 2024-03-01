@@ -1,5 +1,5 @@
 import { getMusicBannerApi, getRecommendSongApi } from '../../api/music';
-import { getTerminalType, querySelector } from '../../utils/helpers';
+import { getTerminalType, querySelector, getRandomNum } from '../../utils/helpers';
 import throttle from '../../utils/throttle';
 
 const TERMINAL_TYPE = {
@@ -43,6 +43,7 @@ Page({
 
   async fetchRecommendSong() {
     const { playlist } = await getRecommendSongApi(3778678);
-    this.setData({ recommendSongs: playlist.tracks.slice(0, 6) });
+    const random = getRandomNum(6, playlist.tracks.length);
+    this.setData({ recommendSongs: playlist.tracks.slice(random - 6, random) });
   }
 });

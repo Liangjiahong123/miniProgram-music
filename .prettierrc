@@ -1,5 +1,5 @@
 {
-  "jsxBracketSameLine": true,
+  "jsxBracketSameLine": false,
   "jsxSingleQuote": true,
   "semi": true,
   "singleQuote": true,
@@ -13,15 +13,21 @@
   "overrides": [
     {
       "files": "*.wxml",
-      "options": { "parser": "html" }
+      "options": {
+        "parser": "html"
+      }
     },
     {
       "files": "*.wxss",
-      "options": { "parser": "css" }
+      "options": {
+        "parser": "css"
+      }
     },
     {
       "files": "*.wxs",
-      "options": { "parser": "babel" }
+      "options": {
+        "parser": "babel"
+      }
     }
   ],
   "[javascript]": {
