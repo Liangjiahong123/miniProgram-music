@@ -1,0 +1,5 @@
+<view class="song-list">
+  <block wx:for="{{getRecommendSongs}}" wx:key="id">
+    <rcm-song-item songItem="{{ item }}" />
+  </block>
+</view>
