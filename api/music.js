@@ -8,6 +8,10 @@ export function getRecommendSongApi(id) {
   return request.get({ url: '/playlist/detail', data: { id } });
 }
 
-export function getSongMenuApi(cat) {
-  return request.get({ url: '/top/playlist', data: { limit: 15, offset: 0, cat } });
+export function getSongMenuApi(limit = 15, cat = '') {
+  return request.get({ url: '/top/playlist', data: { limit, offset: 0, cat } });
+}
+
+export function getSongMenuTagApi() {
+  return request.get({ url: '/playlist/hot' });
 }

@@ -1,6 +1,6 @@
 import { createStoreBindings } from 'mobx-miniprogram-bindings';
-import { getMusicBannerApi, getRecommendSongApi, getSongMenuApi } from '../../api/music';
-import { getTerminalType, querySelector, getRandomNum } from '../../utils/helpers';
+import { getMusicBannerApi, getSongMenuApi } from '../../api/music';
+import { getTerminalType, querySelector } from '../../utils/helpers';
 import { songStore } from '../../stores/song';
 import throttle from '../../utils/throttle';
 
@@ -17,21 +17,21 @@ Page({
     searchKey: '',
     bannerList: [],
     bannerHeight: 150,
-    recommendSongs: [],
     hotSongMenu: [],
     recSongMenu: []
   },
 
   onLoad() {
+    this.storeBindings = createStoreBindings(this, {
+      store: songStore,
+      fields: ['getRandomRecSongs', 'getPeakRankData'],
+      actions: ['fetchRankSongs']
+    });
+
     this.fetchMusicBanner();
-    this.fetchRecommendSong();
+    this.fetchRankSongs();
     this.fetchHotSongMenu();
     this.fetchRecSongMenu();
-
-    this.storeBindings = createStoreBindings(this, {
-      store: songStore, // 数据源(将store中的某些字段、方法绑定到当前页面中)
-      actions: ['setRecommendSongs'] // 将哪些方法绑定到此页面中
-    });
   },
 
   onUnload() {
@@ -62,14 +62,6 @@ Page({
     this.setData({ bannerList: banners });
   },
 
-  async fetchRecommendSong() {
-    const { playlist } = await getRecommendSongApi(3778678);
-    const random = getRandomNum(6, playlist.tracks.length);
-    const recommendSongs = playlist.tracks.slice(random - 6, random);
-    this.setData({ recommendSongs });
-    this.setRecommendSongs(playlist.tracks);
-  },
-
   async fetchHotSongMenu() {
     const { playlists } = await getSongMenuApi();
     const hotSongMenu = playlists;
@@ -77,7 +69,7 @@ Page({
   },
 
   async fetchRecSongMenu() {
-    const { playlists } = await getSongMenuApi('华语');
+    const { playlists } = await getSongMenuApi(15, '华语');
     const recSongMenu = playlists;
     this.setData({ recSongMenu });
   }
