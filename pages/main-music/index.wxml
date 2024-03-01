@@ -22,7 +22,7 @@
 <!-- 推荐歌单 -->
 <song-menu wx:if="{{recSongMenu.length}}" songData="{{recSongMenu}}" title="推荐歌单" />
 
-<view class="ranking">
+<view class="ranking" wx:if="{{getShowRanks}}">
   <title-view title="巅峰榜" hasMore="{{false}}" />
   <view class="ranking-list">
     <block wx:for="{{getPeakRankData}}" wx:key="id">

@@ -1,7 +1,7 @@
 import { createStoreBindings } from 'mobx-miniprogram-bindings';
 import { getMusicBannerApi, getSongMenuApi } from '../../api/music';
 import { getTerminalType, querySelector } from '../../utils/helpers';
-import { songStore } from '../../stores/song';
+import songStore from '../../stores/song';
 import throttle from '../../utils/throttle';
 
 const TERMINAL_TYPE = {
@@ -22,12 +22,7 @@ Page({
   },
 
   onLoad() {
-    this.storeBindings = createStoreBindings(this, {
-      store: songStore,
-      fields: ['getRandomRecSongs', 'getPeakRankData'],
-      actions: ['fetchRankSongs']
-    });
-
+    this.useSongStore();
     this.fetchMusicBanner();
     this.fetchRankSongs();
     this.fetchHotSongMenu();
@@ -46,7 +41,15 @@ Page({
 
   handleNavToMoreSong() {
     wx.navigateTo({
-      url: '/pages/detail-song/index'
+      url: '/pages/detail-song/index?type=recommendRankSongs'
+    });
+  },
+
+  useSongStore() {
+    this.storeBindings = createStoreBindings(this, {
+      store: songStore,
+      fields: ['getRandomRecSongs', 'getPeakRankData', 'getShowRanks'],
+      actions: ['fetchRankSongs']
     });
   },
 
