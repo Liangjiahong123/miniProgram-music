@@ -1,1 +1,1 @@
-<view>{{songId}}</view>
+<view>{{currentSong.name}}</view>

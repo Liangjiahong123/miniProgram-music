@@ -2,7 +2,7 @@
   <image wx:if="{{showImg}}" class="pic" src="{{songItem.al.picUrl}}" mode="widthFix" />
   <view wx:if="{{showIndex}}" class="index">{{index}}.</view>
   <view class="song-info">
-    <view class="name">{{songItem.al.name}}</view>
+    <view class="name">{{songItem.name}}</view>
     <view class="artist">
       <image class="sq-icon" src="/assets/images/icons/sq_icon.png" mode="widthFix" />
       <block wx:for="{{songItem.ar}}" wx:key="id">
