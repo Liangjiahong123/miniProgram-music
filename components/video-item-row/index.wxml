@@ -5,7 +5,7 @@
     <image class="cover" src="{{videoItem.cover}}" mode="widthFix" />
     <view class="play-count">
       <image class="icon" src="/assets/images/icons/play_icon.png" mode="widthFix" />
-      <text class="count">{{fmt.formatPlayCount(videoItem.playCount)}}</text>
+      <text class="count">{{fmt.formatCount(videoItem.playCount)}}</text>
     </view>
   </view>
   <view class="content">

@@ -6,7 +6,7 @@
     <view class="name item">{{info.name}}</view>
     <view class="artist item">{{info.artistName}} - {{info.desc}}</view>
     <view class="detail item">
-      {{fmt.formatPlayCount(info.playCount)}}次播放 - {{info.publishTime}}
+      {{fmt.formatCount(info.playCount)}}次播放 - {{info.publishTime}}
     </view>
   </view>
 

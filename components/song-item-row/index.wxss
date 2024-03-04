@@ -9,6 +9,10 @@
   border-radius: 16rpx;
   flex-shrink: 0;
 }
+.index {
+  font-size: 28rpx;
+  color: #666;
+}
 .song-info {
   flex: 1;
   display: flex;
@@ -26,6 +30,11 @@
   font-size: 24rpx;
   color: #999;
   white-space: nowrap;
+}
+.song-info .sq-icon {
+  width: 47rpx;
+  margin-right: 10rpx;
+  padding-top: 5rpx;
 }
 .song-info .alia {
   max-width: 350rpx;
