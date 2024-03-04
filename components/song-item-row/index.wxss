@@ -20,6 +20,10 @@
   margin-left: 24rpx;
 }
 .song-info .name {
+  max-width: 500rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
   font-size: 32rpx;
   color: #555;
 }
@@ -37,7 +41,7 @@
   padding-top: 5rpx;
 }
 .song-info .alia {
-  max-width: 350rpx;
+  max-width: 250rpx;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
