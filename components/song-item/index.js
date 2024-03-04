@@ -9,7 +9,9 @@ Component({
   methods: {
     handleSongItemTap() {
       const songId = this.properties.songItem.id;
-      console.log(songId);
+      wx.navigateTo({
+        url: `/pages/music-player/index?id=${songId}`
+      });
     }
   }
 });
