@@ -2,6 +2,9 @@ import { createStoreBindings } from 'mobx-miniprogram-bindings';
 import { getRecommendSongApi } from '../../api/music';
 import songStore from '../../stores/song';
 Page({
+  data: {
+    songsData: {}
+  },
   onLoad(options) {
     const { id, type } = options;
     if (type) {
