@@ -3,7 +3,7 @@
 <view class="song-list">
   <block wx:for="{{songsData.tracks}}" wx:key="id">
     <view class="border">
-      <song-item-row songItem="{{item}}" index="{{index + 1}}" showImg="{{false}}" showIndex />
+      <song-item songItem="{{item}}" index="{{index + 1}}" showImg="{{false}}" showIndex />
     </view>
   </block>
 </view>

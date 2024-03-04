@@ -13,7 +13,7 @@
 
   <view class="song-list">
     <block wx:for="{{getRandomRecSongs}}" wx:key="id">
-      <song-item-row songItem="{{item}}" />
+      <song-item songItem="{{item}}" />
     </block>
   </view>
 </view>

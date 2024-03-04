@@ -3,7 +3,7 @@
     <title-view title="{{item.cat}}" hasMore="{{false}}" />
     <view class="list">
       <block wx:for="{{item.playlists}}" wx:key="id" wx:for-item="song">
-        <song-item-col class="item" songItem="{{song}}" />
+        <menu-item class="item" songItem="{{song}}" />
       </block>
     </view>
   </view>

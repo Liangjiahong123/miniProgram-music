@@ -2,7 +2,7 @@
   <title-view title="{{title}}" hasMore="{{hasMore}}" bind:moreclick="handleMenuMoreClick" />
   <scroll-view class="song-menu" scroll-x style="width: {{scrollViewWidth}}px;">
     <block wx:for="{{songData}}" wx:key="id">
-      <song-item-col class="item" songItem="{{item}}" />
+      <menu-item class="item" songItem="{{item}}" />
     </block>
   </scroll-view>
 </view>
