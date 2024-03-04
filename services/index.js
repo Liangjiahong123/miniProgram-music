@@ -25,4 +25,4 @@ class Request {
   }
 }
 
-export const request = new Request('http://codercba.com:9002');
+export const request = new Request('http://localhost:4000');

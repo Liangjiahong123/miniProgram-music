@@ -1,9 +1,15 @@
-// pages/music-player/index.js
+import { getSongDetailApi } from '../../api/music';
+
 Page({
   data: {
-    songId: ''
+    currentSong: {}
   },
   onLoad(options) {
-    this.setData({ songId: options.id });
+    this.fetchSongDetailInfo(options.id);
+  },
+
+  async fetchSongDetailInfo(id) {
+    const { songs } = await getSongDetailApi(id);
+    this.setData({ currentSong: songs[0] || {} });
   }
 });
