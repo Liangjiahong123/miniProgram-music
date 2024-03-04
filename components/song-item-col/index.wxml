@@ -1,9 +1,9 @@
 <wxs src="/utils/format.wxs" module="fmt" />
 
-<view class="song-item">
+<view class="song-item" bind:tap="handleNavToMenuDetail">
   <view class="top">
     <image class="cover" src="{{songItem.coverImgUrl}}" mode="widthFix" />
-    <view class="playcount">{{fmt.formatPlayCount(songItem.playCount) }}</view>
+    <view class="playcount">{{fmt.formatCount(songItem.playCount) }}</view>
   </view>
   <view class="bottom">{{songItem.name}}</view>
 </view>

@@ -8,7 +8,7 @@
     <view class="play-info">
       <view class="play-count">
         <image class="icon" src="/assets/images/icons/play_icon.png" mode="widthFix" />
-        <text>{{fmt.formatPlayCount(videoItem.playCount)}}</text>
+        <text>{{fmt.formatCount(videoItem.playCount)}}</text>
       </view>
       <view class="play-time">{{fmt.formatPlayTime(videoItem.mv.videos[0].duration)}}</view>
     </view>

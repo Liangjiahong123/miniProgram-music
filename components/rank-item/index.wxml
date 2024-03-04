@@ -14,6 +14,6 @@
   </view>
   <view class="right">
     <image class="image" src="{{rankItem.coverImgUrl}}" />
-    <view class="count">{{fmt.formatPlayCount(rankItem.playCount)}}</view>
+    <view class="count">{{fmt.formatCount(rankItem.playCount)}}</view>
   </view>
 </view>

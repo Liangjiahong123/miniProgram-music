@@ -1,5 +1,25 @@
-<!-- <view class="song-list">
-  <block wx:for="{{getAllRecommendSongs}}" wx:key="id">
-    <song-item-row songItem="{{ item }}" />
+<wxs src="/utils/format.wxs" module="fmt" />
+
+<view class="top">
+  <image class="top-pic" src="{{songsData.coverImgUrl}}" mode="aspectFill" />
+  <view class="menu-info">
+    <!-- 收藏数 -->
+    <view class="favor">
+      <image class="icon" src="/assets/images/icons/favor_icon.png" mode="widthFix" />
+      <view class="count">{{fmt.formatCount(songsData.subscribedCount)}}</view>
+    </view>
+    <!-- 分享数 -->
+    <view class="share">
+      <image class="icon" src="/assets/images/icons/share_icon.png" mode="widthFix" />
+      <view class="count">{{fmt.formatCount(songsData.shareCount)}}</view>
+    </view>
+  </view>
+</view>
+
+<view class="song-list">
+  <block wx:for="{{songsData.tracks}}" wx:key="id">
+   <view class="border">
+    <song-item-row  songItem="{{item}}" index="{{index + 1}}" showImg="{{false}}" showIndex />
+   </view>
   </block>
-</view> -->
+</view>

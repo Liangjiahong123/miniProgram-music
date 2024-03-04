@@ -1,4 +1,4 @@
-function formatPlayCount(count) {
+function formatCount(count) {
   var numCount = parseInt(count);
 
   var getCountInfo = function () {
@@ -30,6 +30,6 @@ function formatPlayTime(time) {
 
 // 定义的内容必须导出才能被使用，而且必须使用commonJs导出
 module.exports = {
-  formatPlayCount: formatPlayCount,
+  formatCount: formatCount,
   formatPlayTime: formatPlayTime
 };
