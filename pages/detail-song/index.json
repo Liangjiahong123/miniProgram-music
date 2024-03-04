@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "song-item-row": "/components/song-item-row/index"
+    "song-item-row": "/components/song-item-row/index",
+    "header-view": "./components/header-view/index"
   }
 }
