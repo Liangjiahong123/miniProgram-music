@@ -1,0 +1,17 @@
+.navbar {
+  background-color: transparent;
+  --nav-bar-icon-color: #fff;
+}
+.navbar .tab-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ccc;
+  font-size: 28rpx;
+}
+.navbar .tab-title .middle {
+  margin: 0 10rpx;
+}
+.navbar .tab-title .active {
+  color: #fff;
+}

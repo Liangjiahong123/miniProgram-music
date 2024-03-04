@@ -1,0 +1,7 @@
+<van-nav-bar custom-class="navbar" left-arrow fixed placeholder border="{{false}}">
+  <view class="tab-title" slot="title">
+    <view class="left {{selected=== 0 && 'active'}}" bind:tap="handleToggleTitle" data-title="{{0}}">歌曲</view>
+    <view class="middle">|</view>
+    <view class="right {{selected === 1 && 'active' }}" bind:tap="handleToggleTitle" data-title="{{1}}">歌词</view>
+  </view>
+</van-nav-bar>

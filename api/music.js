@@ -19,3 +19,7 @@ export function getSongMenuTagApi() {
 export function getSongDetailApi(id) {
   return request.get({ url: '/song/detail', data: { ids: id } });
 }
+
+export function getSongLyricApi(id) {
+  return request.get({ url: '/lyric', data: { id } });
+}

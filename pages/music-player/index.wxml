@@ -1,1 +1,5 @@
-<view>{{currentSong.name}}</view>
+<!-- 背景 -->
+<image class="bg-cover" src="{{song.al.picUrl}}" mode="aspectFill" />
+<view class="bg-filter">
+  <nav-bar bind:change="onTabTitleChange" />
+</view>
