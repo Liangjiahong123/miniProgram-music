@@ -15,3 +15,7 @@ export function getSongMenuApi(limit = 15, cat = '') {
 export function getSongMenuTagApi() {
   return request.get({ url: '/playlist/hot' });
 }
+
+export function getSongDetailApi(id) {
+  return request.get({ url: '/song/detail', data: { ids: id } });
+}
