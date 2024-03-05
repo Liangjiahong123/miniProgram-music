@@ -1,4 +1,4 @@
-<van-nav-bar custom-class="navbar" left-arrow fixed placeholder border="{{false}}">
+<van-nav-bar custom-class="navbar" left-arrow fixed placeholder border="{{false}}" bind:click-left="handleClickLeftArrow">
   <view class="tab-title" slot="title">
     <view class="left {{selected=== 0 && 'active'}}" bind:tap="handleToggleTitle" data-title="{{0}}">歌曲</view>
     <view class="middle">|</view>

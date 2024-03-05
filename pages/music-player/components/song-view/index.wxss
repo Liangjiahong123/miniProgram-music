@@ -1,8 +1,25 @@
+.song-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 32rpx 60rpx 48rpx;
+}
 .album {
+  display: flex;
+  align-items: center;
+  flex: 5;
+}
+.album .pic {
+  width: 100%;
   border-radius: 12rpx;
 }
 .song-info {
-  margin-top: 64rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
 }
 .song-info .name {
   font-size: 50rpx;
@@ -15,12 +32,17 @@
   color: #ccc;
 }
 .lyric {
-  margin: 48rpx auto 0;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
   color: #ddd;
 }
 .progress {
-  margin-top: 48rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
   color: #fff;
   font-size: 24rpx;
 }
@@ -37,7 +59,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 48rpx;
+  flex: 1;
   margin-right: 10rpx;
 }
 .control .btn {

@@ -6,9 +6,10 @@
     <view class="artist">
       <image class="sq-icon" src="/assets/images/icons/sq_icon.png" mode="widthFix" />
       <block wx:for="{{songItem.ar}}" wx:key="id">
-        <text decode>{{item.name}}&nbsp;</text>
+        <text>{{item.name}}</text>
+        <text hidden="{{index+1 === songItem.ar.length}}">、</text>
       </block>
-      <text class="alia" wx:if="{{songItem.alia.length}}">- {{songItem.alia[0]}}{{songItem.alia[0]}}</text>
+      <text class="alia" wx:if="{{songItem.alia.length}}">- {{songItem.alia[0]}}</text>
     </view>
   </view>
   <van-icon name="arrow" color="#999" size="16px" />
