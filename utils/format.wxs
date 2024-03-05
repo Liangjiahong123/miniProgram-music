@@ -15,7 +15,7 @@ function formatCount(count) {
   return (countInfo.flag ? resCount.toFixed(1) : resCount) + countInfo.unit;
 }
 
-function formatPlayTime(time) {
+function formatTime(time) {
   time = time / 1000;
   var minute = Math.floor(time / 60);
   var sceond = Math.floor(time) % 60;
@@ -31,5 +31,5 @@ function formatPlayTime(time) {
 // 定义的内容必须导出才能被使用，而且必须使用commonJs导出
 module.exports = {
   formatCount: formatCount,
-  formatPlayTime: formatPlayTime
+  formatTime: formatTime
 };

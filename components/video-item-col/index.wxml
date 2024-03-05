@@ -10,7 +10,7 @@
         <image class="icon" src="/assets/images/icons/play_icon.png" mode="widthFix" />
         <text>{{fmt.formatCount(videoItem.playCount)}}</text>
       </view>
-      <view class="play-time">{{fmt.formatPlayTime(videoItem.mv.videos[0].duration)}}</view>
+      <view class="play-time">{{fmt.formatTime(videoItem.mv.videos[0].duration)}}</view>
     </view>
   </view>
   <!-- 详情 -->
