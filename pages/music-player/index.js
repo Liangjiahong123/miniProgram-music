@@ -5,7 +5,8 @@ Page({
   data: {
     song: {},
     lyric: [],
-    contentHeight: 555
+    contentHeight: 555,
+    currentTab: 0
   },
 
   onLoad(options) {
@@ -16,7 +17,7 @@ Page({
 
   onTabTitleChange(e) {
     const currentTab = e.detail;
-    console.log(currentTab);
+    this.setData({ currentTab });
   },
 
   onSwiperChange(e) {

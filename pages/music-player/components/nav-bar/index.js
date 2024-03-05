@@ -8,6 +8,9 @@ Component({
       const title = e.currentTarget.dataset.title;
       this.setData({ selected: title });
       this.triggerEvent('change', this.data.selected);
+    },
+    handleClickLeftArrow() {
+      wx.navigateBack();
     }
   }
 });
