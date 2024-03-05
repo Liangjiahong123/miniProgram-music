@@ -1,0 +1,29 @@
+<wxs src="/utils/format.wxs" module="fmt" />
+<!-- 图片 -->
+<image class="album" src="{{songData.al.picUrl}}" mode="widthFix" />
+<!-- 歌曲信息 -->
+<view class="song-info">
+  <view class="name">{{songData.name}}</view>
+  <view class="singer" wx:for="{{songData.ar}}" wx:key="id">
+    <text>{{item.name}}</text>
+    <text hidden="{{index+1===songData.ar.length}}">、</text>
+  </view>
+</view>
+<!-- 歌词展示 -->
+<view class="lyric">xxxx</view>
+<!-- 歌曲进度 -->
+<view class="progress">
+  <slider class="silder" block-size="{{12}}" value="{{sliderValue}}" />
+  <view class="time">
+    <view class="current">{{fmt.formatTime(currentTime)}}</view>
+    <view class="duration">{{fmt.formatTime(durationTime)}}</view>
+  </view>
+</view>
+<!-- 控制栏 -->
+<view class="control">
+  <image class="btn btn-mode" src="/assets/images/player/play_{{playMode}}.png" bind:tap="handleTogglePlayMode" />
+  <image class="btn btn-prev" src="/assets/images/player/play_prev.png" bind:tap="handleToggleSong" data-click="prev" />
+  <image class=" btn btn-play" src="/assets/images/player/play_{{ inPlaying ? 'pause': 'resume' }}.png" bind:tap="handleTogglePlayStatus" />
+  <image class="btn btn-next" src="/assets/images/player/play_next.png" bind:tap="handleToggleSong" data-click="next" />
+  <image class="btn btn-music" src="/assets/images/player/play_music.png" />
+</view>
