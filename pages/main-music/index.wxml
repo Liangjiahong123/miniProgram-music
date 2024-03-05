@@ -1,6 +1,19 @@
-<van-search bind:focus="handleSearchFocus" value="{{ searchKey }}" shape="round" background="#fafafa" placeholder="搜索你喜欢的歌曲" />
+<van-search
+  bind:focus="handleSearchFocus"
+  value="{{ searchKey }}"
+  shape="round"
+  background="#fafafa"
+  placeholder="搜索你喜欢的歌曲"
+/>
 <!-- banner -->
-<swiper class="banner-list" wx:if="{{bannerList.length}}" style="height: {{bannerHeight}}px;" indicator-dots autoplay circular>
+<swiper
+  class="banner-list"
+  wx:if="{{bannerList.length}}"
+  style="height: {{bannerHeight}}px;"
+  indicator-dots
+  autoplay
+  circular
+>
   <block wx:for="{{bannerList}}" wx:key="bannerId">
     <swiper-item class="item">
       <image class="banner-pic" src="{{item.pic}}" mode="widthFix" bindload="onBannerImgLoaded" />
