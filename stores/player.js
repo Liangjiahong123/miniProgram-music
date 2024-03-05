@@ -10,10 +10,6 @@ export const playerStore = observable({
   playing: false,
   playModeIndex: 0, // 0: 顺序播放 1:单曲循环 2:随机播放
 
-  get progressValue() {
-    return (this.currentTime / this.durationTime) * 100;
-  },
-
   fetchSongWithId: action(async function (id) {
     const { songs } = await getSongDetailApi(id);
     this.currentSong = songs[0] || {};
@@ -33,13 +29,29 @@ export const playerStore = observable({
     audioContext.onTimeUpdate(() => {
       this.currentTime = audioContext.currentTime * 1000;
     });
+
+    audioContext.onCanplay(() => {
+      if (!this.playing) return;
+      audioContext.play();
+    });
+
+    audioContext.onWaiting(() => {
+      audioContext.pause();
+    });
   }),
 
-  setCurrentTime: action(function () {}),
+  setCurrentTime: action(function (payload) {
+    this.currentTime = payload;
+  }),
 
   setPlayStatus: action(function () {
-    this.playing = !this.playing;
-    this.playing ? audioContext.play() : audioContext.pause();
+    if (audioContext.paused) {
+      audioContext.play();
+      this.playing = true;
+    } else {
+      audioContext.pause();
+      this.playing = false;
+    }
   }),
 
   setPlayModeIndex: action(function () {

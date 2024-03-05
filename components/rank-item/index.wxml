@@ -8,7 +8,9 @@
         <text>{{index + 1}}.</text>
         <text>{{song.name}}</text>
         <text decode>&nbsp;-&nbsp;</text>
-        <text class="singer" wx:for="{{song.ar}}" wx:key="id">{{item.name}}<text hidden="{{index===song.ar.length-1}}">、</text></text>
+        <text class="singer" wx:for="{{song.ar}}" wx:key="id"
+          >{{item.name}}<text hidden="{{index===song.ar.length-1}}">、</text></text
+        >
       </view>
     </view>
   </view>
