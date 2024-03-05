@@ -1,23 +1,45 @@
-// pages/music-player/components/song-view/index.js
+import { storeBindingsBehavior } from 'mobx-miniprogram-bindings';
+import { playerStore, MODE_NAMES } from '../../../../stores/player';
+
 Component({
-  properties: {
-    songData: { type: Object, value: {} }
+  behaviors: [storeBindingsBehavior],
+  storeBindings: {
+    store: playerStore,
+    fields: [
+      'currentSong',
+      'currentTime',
+      'durationTime',
+      'progressValue',
+      'playing',
+      'playModeIndex'
+    ],
+    actions: ['playSong', 'setPlayStatus', 'setPlayModeIndex']
   },
+
   data: {
-    currentTime: 0,
-    durationTime: 400000,
-    sliderValue: 0,
-    playMode: 'random',
-    inPlaying: false
+    playMode: 'order'
   },
 
   methods: {
-    handleTogglePlayMode() {},
+    handleTogglePlayMode() {
+      this.setPlayModeIndex();
+    },
 
     handleToggleSong(e) {},
 
     handleTogglePlayStatus() {
-      this.setData({ inPlaying: !this.data.inPlaying });
+      this.setPlayStatus();
+    }
+  },
+
+  observers: {
+    currentSong(newVal) {
+      if (!newVal.id) return;
+      this.playSong();
+    },
+    playModeIndex(newVal) {
+      if (newVal == undefined || newVal == null) return;
+      this.setData({ playMode: MODE_NAMES[newVal] });
     }
   }
 });

@@ -1,5 +1,5 @@
 <!-- 背景 -->
-<image class="bg-cover" src="{{song.al.picUrl}}" mode="aspectFill" />
+<image class="bg-cover" src="{{currentSong.al.picUrl}}" mode="aspectFill" />
 <view class="bg-filter">
   <!-- 顶部栏 -->
   <nav-bar bind:change="onTabTitleChange" class="nav-bar" />
@@ -7,7 +7,7 @@
   <swiper style="height:{{contentHeight}}px" current="{{currentTab}}" bindchange="onSwiperChange">
     <!-- 歌曲展示 -->
     <swiper-item>
-      <song-view songData="{{song}}" />
+      <song-view />
     </swiper-item>
     <!-- 歌词展示 -->
     <swiper-item>
