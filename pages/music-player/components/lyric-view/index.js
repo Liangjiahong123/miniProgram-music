@@ -1,24 +1,20 @@
-// pages/music-player/components/lyric-view/index.js
+import { storeBindingsBehavior } from 'mobx-miniprogram-bindings';
+import { playerStore } from '../../../../stores/player';
+const app = getApp();
+
 Component({
-
-  /**
-   * 组件的属性列表
-   */
-  properties: {
-
+  behaviors: [storeBindingsBehavior],
+  storeBindings: {
+    store: playerStore,
+    fields: ['lyricData', 'currentLyric']
   },
-
-  /**
-   * 组件的初始数据
-   */
   data: {
-
+    contentHeight: 555
   },
 
-  /**
-   * 组件的方法列表
-   */
-  methods: {
-
+  lifetimes: {
+    attached() {
+      this.setData({ contentHeight: app.globalData.windowHeight });
+    }
   }
-})
+});

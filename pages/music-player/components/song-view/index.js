@@ -6,7 +6,14 @@ Component({
   behaviors: [storeBindingsBehavior],
   storeBindings: {
     store: playerStore,
-    fields: ['currentSong', 'currentTime', 'durationTime', 'playing', 'playModeIndex','currentLyric'],
+    fields: [
+      'currentSong',
+      'currentTime',
+      'durationTime',
+      'playing',
+      'playModeIndex',
+      'currentLyric'
+    ],
     actions: ['playSong', 'setPlayStatus', 'setPlayModeIndex', 'setCurrentTime']
   },
 
