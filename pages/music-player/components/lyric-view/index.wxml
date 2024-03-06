@@ -1,1 +1,10 @@
-<text>歌词</text>
+<scroll-view class="lyric-container" scroll-y scroll-with-animation>
+  <block wx:for="{{lyricData}}" wx:key="id">
+    <view
+      class="item {{index === currentLyric.index && 'active'}}"
+      style="padding-top: {{index === 0 ? (contentHeight/2-66): 0 }}px; padding-bottom: {{index === lyricData.length-1 ? (contentHeight/2+66) : 0}}px;"
+    >
+      {{item.text}}
+    </view>
+  </block>
+</scroll-view>

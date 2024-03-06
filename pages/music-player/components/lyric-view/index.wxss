@@ -1,1 +1,22 @@
-/* pages/music-player/components/lyric-view/index.wxss */
+.lyric-container {
+  padding: 30rpx 0;
+  height: 100%;
+  color: #fff;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.lyric-container ::-webkit-scrollbar {
+  display: none;
+}
+.lyric-container .item {
+  height: 35px;
+  line-height: 35px;
+  font-size: 28rpx;
+  text-align: center;
+  scale: 1;
+}
+.lyric-container .item.active {
+  color: #ff0000;
+  scale: 1.2;
+  transition: color 0.3s, scale 0.3s;
+}
