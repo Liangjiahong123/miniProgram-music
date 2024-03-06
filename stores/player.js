@@ -9,6 +9,7 @@ export const playerStore = observable({
   currentTime: 0,
   durationTime: 0,
   lyricData: [],
+  playSongList: [],
   currentLyric: { text: '', index: -1 },
   playing: false,
   playModeIndex: 0, // 0: 顺序播放 1:单曲循环 2:随机播放
@@ -85,6 +86,10 @@ export const playerStore = observable({
       return;
     }
     this.playModeIndex += 1;
+  }),
+
+  setPlaySongList: action(function (payload) {
+    this.playSongList = payload;
   })
 });
 

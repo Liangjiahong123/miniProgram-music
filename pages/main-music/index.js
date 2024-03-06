@@ -1,7 +1,8 @@
-import { createStoreBindings } from 'mobx-miniprogram-bindings';
+import { BehaviorWithStore } from 'mobx-miniprogram-bindings';
 import { getMusicBannerApi, getSongMenuApi } from '../../api/music';
 import { getTerminalType, querySelector } from '../../utils/helpers';
 import songStore from '../../stores/song';
+import { playerStore } from '../../stores/player';
 import throttle from '../../utils/throttle';
 
 const TERMINAL_TYPE = {
@@ -12,7 +13,25 @@ const TERMINAL_TYPE = {
 };
 const querySelectThrottle = throttle(querySelector, 100);
 
+const storeBehavior = BehaviorWithStore({
+  storeBindings: [
+    {
+      namespace: 'songStore',
+      store: songStore,
+      fields: ['getRandomRecSongs', 'getPeakRankData', 'getShowRanks'],
+      actions: ['fetchRankSongs']
+    },
+    {
+      namespace: 'playerStore',
+      store: playerStore,
+      actions: ['setPlaySongList']
+    }
+  ]
+});
+
 Page({
+  behaviors: [storeBehavior],
+
   data: {
     searchKey: '',
     bannerList: [],
@@ -22,15 +41,10 @@ Page({
   },
 
   onLoad() {
-    this.useSongStore();
     this.fetchMusicBanner();
     this.fetchRankSongs();
     this.fetchHotSongMenu();
     this.fetchRecSongMenu();
-  },
-
-  onUnload() {
-    this.storeBindings.destroyStoreBindings();
   },
 
   handleSearchFocus() {
@@ -45,12 +59,8 @@ Page({
     });
   },
 
-  useSongStore() {
-    this.storeBindings = createStoreBindings(this, {
-      store: songStore,
-      fields: ['getRandomRecSongs', 'getPeakRankData', 'getShowRanks'],
-      actions: ['fetchRankSongs']
-    });
+  handleSavePlayList() {
+    this.setPlaySongList(this.data.getRandomRecSongs);
   },
 
   async onBannerImgLoaded() {

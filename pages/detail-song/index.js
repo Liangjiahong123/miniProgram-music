@@ -1,27 +1,39 @@
-import { createStoreBindings } from 'mobx-miniprogram-bindings';
+import { BehaviorWithStore } from 'mobx-miniprogram-bindings';
 import { getRecommendSongApi } from '../../api/music';
 import songStore from '../../stores/song';
+import { playerStore } from '../../stores/player';
+
+const storeBehavior = BehaviorWithStore({
+  storeBindings: [
+    {
+      namespace: 'songStore',
+      store: songStore,
+      fields: ['recommendRankSongs', 'newRankSongs', 'originRankSongs', 'soarRankSongs']
+    },
+    {
+      namespace: 'playerStore',
+      store: playerStore,
+      actions: ['setPlaySongList']
+    }
+  ]
+});
+
 Page({
+  behaviors: [storeBehavior],
+
   data: {
     songsData: {}
   },
+
   onLoad(options) {
     const { id, type } = options;
+
     if (type) {
-      this.useSongStore(type);
       this.setPageTitle();
+      this.setData({ songsData: this.data.songStore[type] });
     } else if (id) {
       this.fetchSongMenuInfo(id);
     }
-  },
-
-  useSongStore(type) {
-    this.storeBindings = createStoreBindings(this, {
-      store: songStore,
-      fields: {
-        songsData: () => songStore[type]
-      }
-    });
   },
 
   setPageTitle(title) {
@@ -30,6 +42,10 @@ Page({
         title: title || this.data.songsData?.name || '歌单'
       });
     });
+  },
+
+  handleSavePlayList() {
+    this.setPlaySongList(this.data.songsData?.tracks || []);
   },
 
   async fetchSongMenuInfo(id) {

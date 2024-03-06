@@ -1,9 +1,8 @@
-import { storeBindingsBehavior } from 'mobx-miniprogram-bindings';
+import { ComponentWithStore } from 'mobx-miniprogram-bindings';
 import { playerStore } from '../../../../stores/player';
 const app = getApp();
 
-Component({
-  behaviors: [storeBindingsBehavior],
+ComponentWithStore({
   storeBindings: {
     store: playerStore,
     fields: ['lyricData', 'currentLyric']

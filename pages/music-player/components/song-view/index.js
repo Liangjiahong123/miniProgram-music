@@ -1,9 +1,8 @@
-import { storeBindingsBehavior } from 'mobx-miniprogram-bindings';
+import { ComponentWithStore } from 'mobx-miniprogram-bindings';
 import { playerStore, MODE_NAMES, audioContext } from '../../../../stores/player';
 import throttle from '../../../../utils/throttle';
 
-Component({
-  behaviors: [storeBindingsBehavior],
+ComponentWithStore({
   storeBindings: {
     store: playerStore,
     fields: [
