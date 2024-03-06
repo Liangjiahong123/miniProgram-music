@@ -4,10 +4,6 @@ import { parseLyrics } from '../utils/helpers';
 
 export const audioContext = wx.createInnerAudioContext();
 export const MODE_NAMES = ['order', 'repeat', 'random'];
-const TOGGLE_MODE = {
-  prev: 'prev',
-  next: 'next'
-};
 
 export const playerStore = observable({
   currentSong: {},
@@ -16,6 +12,7 @@ export const playerStore = observable({
   lyricData: [],
   playSongList: [],
   playSongIndex: 0,
+  firstPlay: true,
   currentLyric: { text: '', index: -1 },
   playing: false,
   playModeIndex: 0, // 0: 顺序播放 1:单曲循环 2:随机播放
@@ -38,7 +35,11 @@ export const playerStore = observable({
     audioContext.src = createAudioSrc(this.currentSong.id);
     audioContext.autoplay = true;
     this.playing = true;
-    this.bindAudioEvent();
+
+    if (this.firstPlay) {
+      this.firstPlay = false;
+      this.bindAudioEvent();
+    }
   }),
 
   matchLyric: action(function () {
@@ -108,7 +109,7 @@ export const playerStore = observable({
 
     switch (this.playModeIndex) {
       case 0:
-        index += payload === TOGGLE_MODE.prev ? -1 : 1;
+        index += payload === 'prev' ? -1 : 1;
         if (index === -1) index = length - 1;
         if (index === length) index = 0;
         break;
@@ -119,9 +120,19 @@ export const playerStore = observable({
         break;
     }
 
+    this.clearStore();
+    const currentSongId = this.playSongList[index].id;
     this.playSongIndex = index;
-    this.currentSong = this.playSongList[index];
-    this.playSong();
+    this.fetchSongWithId(currentSongId);
+  }),
+
+  clearStore: action(function () {
+    this.currentSong = {};
+    this.currentTime = 0;
+    this.durationTime = 0;
+    this.playing = false;
+    this.currentLyric = { text: '', index: -1 };
+    this.lyricData = [];
   })
 });
 
