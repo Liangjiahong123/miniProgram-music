@@ -1,0 +1,16 @@
+<wxs src="/utils/format.wxs" module="fmt" />
+
+<view class="progress">
+  <slider
+    class="silder"
+    block-size="{{12}}"
+    value="{{playProgress}}"
+    activeColor="#ff0000"
+    bindchange="onPlayProgressChange"
+    bindchanging="onPlayProgressChanging"
+  />
+  <view class="time">
+    <view class="current">{{fmt.formatTime(playTime)}}</view>
+    <view class="duration">{{fmt.formatTime(durationTime)}}</view>
+  </view>
+</view>

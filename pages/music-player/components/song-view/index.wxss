@@ -38,7 +38,7 @@
   flex: 1;
   color: #fff;
 }
-.progress {
+/* .progress {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -54,7 +54,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-}
+} */
 .control {
   display: flex;
   align-items: center;
