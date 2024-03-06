@@ -1,9 +1,13 @@
 <header-view songsData="{{songsData}}" />
 
 <view class="song-list">
-  <block wx:for="{{songsData.tracks}}" wx:key="id">
-    <view class="border">
-      <song-item songItem="{{item}}" index="{{index + 1}}" showImg="{{false}}" showIndex />
-    </view>
-  </block>
+  <view wx:for="{{songsData.tracks}}" wx:key="id" class="border">
+    <song-item
+      songItem="{{item}}"
+      index="{{index + 1}}"
+      showImg="{{false}}"
+      showIndex
+      bind:tap="handleSavePlayList"
+    />
+  </view>
 </view>

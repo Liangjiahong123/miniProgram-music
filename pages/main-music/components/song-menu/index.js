@@ -1,4 +1,3 @@
-// components/song-menu/index.js
 const app = getApp();
 
 Component({
