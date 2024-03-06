@@ -8,7 +8,7 @@ class Request {
       wx.request({
         ...config,
         url: this.baseUrl + config.url,
-        success: res => {
+        success: (res) => {
           resolve(res.data);
         },
         fail: reject
