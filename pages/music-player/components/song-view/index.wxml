@@ -14,7 +14,7 @@
     </view>
   </view>
   <!-- 歌词展示 -->
-  <view class="lyric">xxxx</view>
+  <view class="lyric">{{currentLyric.text}}</view>
   <!-- 歌曲进度 -->
   <view class="progress">
     <slider

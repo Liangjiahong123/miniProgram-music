@@ -1,5 +1,6 @@
 import { observable, action } from 'mobx-miniprogram';
 import { getSongDetailApi, getSongLyricApi } from '../api/music';
+import { parseLyrics } from '../utils/helpers';
 
 export const audioContext = wx.createInnerAudioContext();
 export const MODE_NAMES = ['order', 'repeat', 'random'];
@@ -7,6 +8,8 @@ export const playerStore = observable({
   currentSong: {},
   currentTime: 0,
   durationTime: 0,
+  lyricData: [],
+  currentLyric: { text: '', index: -1 },
   playing: false,
   playModeIndex: 0, // 0: 顺序播放 1:单曲循环 2:随机播放
 
@@ -14,6 +17,12 @@ export const playerStore = observable({
     const { songs } = await getSongDetailApi(id);
     this.currentSong = songs[0] || {};
     this.durationTime = songs[0].dt || 0;
+  }),
+
+  fetchSongLyric: action(async function (id) {
+    const { lrc } = await getSongLyricApi(id);
+    const lyricData = parseLyrics(lrc.lyric) || [];
+    this.lyricData = lyricData;
   }),
 
   playSong: action(function () {
@@ -25,9 +34,25 @@ export const playerStore = observable({
     this.bindAudioEvent();
   }),
 
+  matchLyric: action(function () {
+    if (!this.lyricData.length) return;
+    let index = this.lyricData.length - 1;
+    for (let i = 0; i < this.lyricData.length; i++) {
+      const lyric = this.lyricData[i];
+      if (lyric.time > audioContext.currentTime * 1000) {
+        index = i - 1;
+        break;
+      }
+    }
+    if (index === this.currentLyric.index || index === -1) return;
+    const playLyric = this.lyricData[index];
+    this.currentLyric = { text: playLyric.text, index };
+  }),
+
   bindAudioEvent: action(function () {
     audioContext.onTimeUpdate(() => {
       this.currentTime = audioContext.currentTime * 1000;
+      this.matchLyric();
     });
 
     audioContext.onCanplay(() => {
