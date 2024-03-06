@@ -27,6 +27,7 @@
       wx:for="{{songStore.getRandomRecSongs}}"
       wx:key="id"
       songItem="{{item}}"
+      data-index="{{index}}"
       bind:tap="handleSavePlayList"
     />
   </view>

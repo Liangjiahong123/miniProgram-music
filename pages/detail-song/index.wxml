@@ -7,6 +7,7 @@
       index="{{index + 1}}"
       showImg="{{false}}"
       showIndex
+      data-index="{{index}}"
       bind:tap="handleSavePlayList"
     />
   </view>

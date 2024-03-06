@@ -24,7 +24,7 @@ const storeBehavior = BehaviorWithStore({
     {
       namespace: 'playerStore',
       store: playerStore,
-      actions: ['setPlaySongList']
+      actions: ['setPlaySongList', 'setPlaySongIndex']
     }
   ]
 });
@@ -59,8 +59,10 @@ Page({
     });
   },
 
-  handleSavePlayList() {
-    this.setPlaySongList(this.data.getRandomRecSongs);
+  handleSavePlayList(e) {
+    const index = e.currentTarget.dataset.index;
+    this.setPlaySongList(this.data.songStore.getRandomRecSongs);
+    this.setPlaySongIndex(index);
   },
 
   async onBannerImgLoaded() {

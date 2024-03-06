@@ -4,12 +4,18 @@ import { parseLyrics } from '../utils/helpers';
 
 export const audioContext = wx.createInnerAudioContext();
 export const MODE_NAMES = ['order', 'repeat', 'random'];
+const TOGGLE_MODE = {
+  prev: 'prev',
+  next: 'next'
+};
+
 export const playerStore = observable({
   currentSong: {},
   currentTime: 0,
   durationTime: 0,
   lyricData: [],
   playSongList: [],
+  playSongIndex: 0,
   currentLyric: { text: '', index: -1 },
   playing: false,
   playModeIndex: 0, // 0: 顺序播放 1:单曲循环 2:随机播放
@@ -90,6 +96,32 @@ export const playerStore = observable({
 
   setPlaySongList: action(function (payload) {
     this.playSongList = payload;
+  }),
+
+  setPlaySongIndex: action(function (payload) {
+    this.playSongIndex = payload;
+  }),
+
+  changeCurrentSong: action(function (payload) {
+    let index = this.playSongIndex,
+      length = this.playSongList.length;
+
+    switch (this.playModeIndex) {
+      case 0:
+        index += payload === TOGGLE_MODE.prev ? -1 : 1;
+        if (index === -1) index = length - 1;
+        if (index === length) index = 0;
+        break;
+      case 1:
+        break;
+      case 2:
+        index = Math.floor(Math.random() * length);
+        break;
+    }
+
+    this.playSongIndex = index;
+    this.currentSong = this.playSongList[index];
+    this.playSong();
   })
 });
 
