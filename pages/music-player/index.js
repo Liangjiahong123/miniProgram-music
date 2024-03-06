@@ -1,11 +1,9 @@
 import { createStoreBindings } from 'mobx-miniprogram-bindings';
 import { playerStore } from '../../stores/player';
-import { getSongDetailApi, getSongLyricApi } from '../../api/music';
 
 const app = getApp();
 Page({
   data: {
-    lyric: [],
     contentHeight: 555,
     currentTab: 0
   },
@@ -36,17 +34,7 @@ Page({
     this.storeBindings = createStoreBindings(this, {
       store: playerStore,
       fields: ['currentSong'],
-      actions: ['fetchSongWithId']
+      actions: ['fetchSongWithId', 'fetchSongLyric']
     });
-  },
-
-  async fetchSongDetailInfo(id) {
-    const { songs } = await getSongDetailApi(id);
-    this.setData({ song: songs[0] || {} });
-  },
-
-  async fetchSongLyric(id) {
-    const { lrc } = await getSongLyricApi(id);
-    // this.setData({ currentSong: songs[0] || {} });
   }
 });

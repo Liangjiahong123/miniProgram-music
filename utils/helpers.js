@@ -12,10 +12,10 @@ export function getTerminalType() {
 }
 
 export function querySelector(selector) {
-  return new Promise(resolve => {
+  return new Promise((resolve) => {
     const query = wx.createSelectorQuery();
     query.select('.banner-pic').boundingClientRect();
-    query.exec(res => {
+    query.exec((res) => {
       resolve(res);
     });
   });
@@ -27,4 +27,22 @@ export function getRandomNum(min, max) {
 
 export function isNotEmptyObj(obj) {
   return Object.keys(obj).length > 0;
+}
+
+export function parseLyrics(lyricStr) {
+  const lyricLines = lyricStr.split('\n');
+  const timeReg = /\[(\d{2}):(\d{2})\.(\d{2,3})\]/;
+
+  const lyricList = lyricLines.filter(Boolean).map((item) => {
+    const timeRes = timeReg.exec(item);
+    const m = timeRes[1] * 60 * 1000;
+    const s = timeRes[2] * 1000;
+    const ms = timeRes[3] * timeRes[3].length === 2 ? 10 : 1;
+    const time = m + s + ms;
+    const text = item.replace(timeReg, '');
+    return { time, text };
+  });
+
+  const filterLyricList = lyricList.filter((item) => item.text);
+  return filterLyricList;
 }
