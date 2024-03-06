@@ -1,4 +1,4 @@
-<scroll-view class="lyric-container" scroll-y scroll-with-animation>
+<scroll-view class="lyric-container" scroll-top="{{lyricScrollTop}}" scroll-y scroll-with-animation>
   <block wx:for="{{lyricData}}" wx:key="id">
     <view
       class="item {{index === currentLyric.index && 'active'}}"
