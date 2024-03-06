@@ -13,10 +13,12 @@
   line-height: 35px;
   font-size: 28rpx;
   text-align: center;
-  scale: 1;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 .lyric-container .item.active {
   color: #ff0000;
-  scale: 1.2;
-  transition: color 0.3s, scale 0.3s;
+  font-size: 34rpx;
+  transition: color 0.3s, font-size 0.3s;
 }

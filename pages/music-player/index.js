@@ -34,7 +34,7 @@ Page({
     this.storeBindings = createStoreBindings(this, {
       store: playerStore,
       fields: ['currentSong'],
-      actions: ['fetchSongWithId', 'fetchSongLyric']
+      actions: ['fetchSongWithId', 'fetchSongLyric', 'setCurrentTime', 'clearCurrentLyric']
     });
   }
 });
