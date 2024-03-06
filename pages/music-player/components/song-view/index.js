@@ -1,5 +1,5 @@
 import { ComponentWithStore } from 'mobx-miniprogram-bindings';
-import { playerStore, MODE_NAMES, audioContext } from '../../../../stores/player';
+import { playerStore, MODE_NAMES, TOGGLE_MODE, audioContext } from '../../../../stores/player';
 import throttle from '../../../../utils/throttle';
 
 ComponentWithStore({
@@ -13,7 +13,13 @@ ComponentWithStore({
       'playModeIndex',
       'currentLyric'
     ],
-    actions: ['playSong', 'setPlayStatus', 'setPlayModeIndex', 'setCurrentTime']
+    actions: [
+      'playSong',
+      'setPlayStatus',
+      'setPlayModeIndex',
+      'setCurrentTime',
+      'changeCurrentSong'
+    ]
   },
 
   data: {
@@ -28,7 +34,10 @@ ComponentWithStore({
       this.setPlayModeIndex();
     },
 
-    handleToggleSong(e) {},
+    handleToggleSong(e) {
+      const clickType = e.currentTarget.dataset.click;
+      this.changeCurrentSong(clickType);
+    },
 
     handleTogglePlayStatus() {
       this.setPlayStatus();

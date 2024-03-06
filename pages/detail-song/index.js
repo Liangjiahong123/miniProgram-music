@@ -13,7 +13,7 @@ const storeBehavior = BehaviorWithStore({
     {
       namespace: 'playerStore',
       store: playerStore,
-      actions: ['setPlaySongList']
+      actions: ['setPlaySongList', 'setPlaySongIndex']
     }
   ]
 });
@@ -44,8 +44,10 @@ Page({
     });
   },
 
-  handleSavePlayList() {
+  handleSavePlayList(e) {
+    const index = e.currentTarget.dataset.index;
     this.setPlaySongList(this.data.songsData?.tracks || []);
+    this.setPlaySongIndex(index);
   },
 
   async fetchSongMenuInfo(id) {
