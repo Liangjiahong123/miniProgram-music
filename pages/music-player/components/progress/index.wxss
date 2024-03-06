@@ -1,0 +1,17 @@
+.progress {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  color: #fff;
+  font-size: 24rpx;
+}
+.progress .silder {
+  margin-left: 18rpx;
+  margin-right: 10rpx;
+}
+.progress .time {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}

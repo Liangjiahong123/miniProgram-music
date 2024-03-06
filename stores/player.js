@@ -71,6 +71,10 @@ export const playerStore = observable({
     audioContext.onWaiting(() => {
       audioContext.pause();
     });
+
+    audioContext.onEnded(() => {
+      this.changeCurrentSong('next');
+    });
   }),
 
   setCurrentTime: action(function (payload) {
@@ -124,6 +128,7 @@ export const playerStore = observable({
     const currentSongId = this.playSongList[index].id;
     this.playSongIndex = index;
     this.fetchSongWithId(currentSongId);
+    this.fetchSongLyric(currentSongId);
   }),
 
   clearStore: action(function () {

@@ -33,7 +33,10 @@
   margin-top: 10rpx;
   font-size: 24rpx;
   color: #999;
+  max-width: 500rpx;
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .song-info .sq-icon {
   width: 47rpx;
