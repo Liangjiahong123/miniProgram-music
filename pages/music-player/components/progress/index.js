@@ -32,6 +32,7 @@ ComponentWithStore({
       // this.setCurrentTime(currentTime);
       // this.setData({ playTime: currentTime });
       // console.log(this.data.playTime);
+    }
   },
 
   observers: {
