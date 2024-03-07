@@ -1,4 +1,4 @@
-import { getSongMenuTagApi, getSongMenuApi } from '../../api/music';
+import { getSongMenuTagApi, getSongMenuApi } from '../../../api/music';
 Page({
   data: {
     songMenus: []

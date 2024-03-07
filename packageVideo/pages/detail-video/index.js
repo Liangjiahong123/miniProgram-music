@@ -1,4 +1,4 @@
-import { getVideoDetailApi, getVideoUrlApi, getVideoListApi } from '../../api/video';
+import { getVideoDetailApi, getVideoUrlApi, getVideoListApi } from '../../../api/video';
 Page({
   data: {
     id: '',

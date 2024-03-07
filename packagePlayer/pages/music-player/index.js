@@ -1,5 +1,5 @@
 import { BehaviorWithStore } from 'mobx-miniprogram-bindings';
-import { playerStore } from '../../stores/player';
+import { playerStore } from '../../../stores/player';
 
 const app = getApp();
 

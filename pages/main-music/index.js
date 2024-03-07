@@ -49,13 +49,13 @@ Page({
 
   handleSearchFocus() {
     wx.navigateTo({
-      url: `/pages/detail-search/index?key=${this.data.searchKey}`
+      url: `/packageSong/pages/detail-search/index?key=${this.data.searchKey}`
     });
   },
 
   handleNavToMoreSong() {
     wx.navigateTo({
-      url: '/pages/detail-song/index?type=recommendRankSongs'
+      url: '/packageSong/pages/detail-song/index?type=recommendRankSongs'
     });
   },
 

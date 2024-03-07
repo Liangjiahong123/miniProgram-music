@@ -1,5 +1,5 @@
 import { ComponentWithStore } from 'mobx-miniprogram-bindings';
-import { playerStore, MODE_NAMES } from '../../../../stores/player';
+import { playerStore, MODE_NAMES } from '../../../stores/player';
 
 ComponentWithStore({
   storeBindings: {

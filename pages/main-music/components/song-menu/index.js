@@ -19,7 +19,7 @@ Component({
   methods: {
     handleMenuMoreClick() {
       wx.navigateTo({
-        url: '/pages/detail-menu/index'
+        url: '/packageSong/pages/detail-menu/index'
       });
     }
   }

@@ -2,9 +2,9 @@
   "usingComponents": {
     "song-menu": "./components/song-menu/index",
     "play-control": "./components/play-control/index",
+    "rank-item": "./components/rank-item/index",
     "title-view": "/components/title-view/index",
     "song-item": "/components/song-item/index",
-    "rank-item": "/components/rank-item/index",
     "van-search": "@vant/weapp/search/index"
   }
 }

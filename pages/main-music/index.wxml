@@ -1,5 +1,5 @@
 <van-search
-  bind:focus="handleSearchFocus"
+  bindfocus="handleSearchFocus"
   value="{{ searchKey }}"
   shape="round"
   background="#fafafa"
