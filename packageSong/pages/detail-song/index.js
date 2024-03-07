@@ -1,7 +1,7 @@
 import { BehaviorWithStore } from 'mobx-miniprogram-bindings';
-import { getRecommendSongApi } from '../../api/music';
-import songStore from '../../stores/song';
-import { playerStore } from '../../stores/player';
+import { getRecommendSongApi } from '../../../api/music';
+import songStore from '../../../stores/song';
+import { playerStore } from '../../../stores/player';
 
 const storeBehavior = BehaviorWithStore({
   storeBindings: [

@@ -1,4 +1,4 @@
-import { getRandomNum } from '../../utils/helpers';
+import { getRandomNum } from '../../../../utils/helpers';
 
 Component({
   properties: {
@@ -22,7 +22,7 @@ Component({
   methods: {
     handleTapRankItem() {
       wx.navigateTo({
-        url: `/pages/detail-song/index?type=${this.properties.key}`
+        url: `/packageSong/pages/detail-song/index?type=${this.properties.key}`
       });
     }
   }

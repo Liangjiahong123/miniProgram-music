@@ -1,8 +1,0 @@
-{
-  "usingComponents": {
-    "nav-bar": "./components/nav-bar/index",
-    "song-view": "./components/song-view/index",
-    "lyric-view": "./components/lyric-view/index"
-  },
-  "navigationStyle": "custom"
-}

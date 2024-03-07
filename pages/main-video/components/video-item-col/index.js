@@ -8,7 +8,7 @@ Component({
     handleNavToDetail(e) {
       const currentItem = this.properties.videoItem;
       wx.navigateTo({
-        url: `/pages/detail-video/index?id=${currentItem.id}`
+        url: `/packageVideo/pages/detail-video/index?id=${currentItem.id}`
       });
     }
   }

@@ -1,13 +1,31 @@
 {
-  "pages": [
-    "pages/main-music/index",
-    "pages/main-video/index",
-    "pages/music-player/index",
-    "pages/detail-video/index",
-    "pages/detail-search/index",
-    "pages/detail-song/index",
-    "pages/detail-menu/index"
+  "pages": ["pages/main-music/index", "pages/main-video/index"],
+  "subpackages": [
+    {
+      "root": "packagePlayer",
+      "name": "player",
+      "pages": ["pages/music-player/index"]
+    },
+    {
+      "root": "packageVideo",
+      "name": "video",
+      "pages": ["pages/detail-video/index"]
+    },
+    {
+      "root": "packageSong",
+      "name": "song",
+      "pages": ["pages/detail-song/index", "pages/detail-menu/index", "pages/detail-search/index"]
+    }
   ],
+  "preloadRule": {
+    "pages/main-music/index": {
+      "network": "all",
+      "packages": ["player", "song"]
+    },
+    "pages/main-video/index": {
+      "packages": ["video"]
+    }
+  },
   "tabBar": {
     "list": [
       {

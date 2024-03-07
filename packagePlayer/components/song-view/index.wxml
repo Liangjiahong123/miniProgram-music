@@ -19,26 +19,26 @@
   <view class="control">
     <image
       class="btn btn-mode"
-      src="/assets/images/player/play_{{playMode}}.png"
+      src="/packagePlayer/assets/images/player/play_{{playMode}}.png"
       bind:tap="handleTogglePlayMode"
     />
     <image
       class="btn btn-prev"
-      src="/assets/images/player/play_prev.png"
+      src="/packagePlayer/assets/images/player/play_prev.png"
       bind:tap="handleToggleSong"
       data-click="prev"
     />
     <image
       class="btn btn-play"
-      src="/assets/images/player/play_{{ playing ? 'pause': 'resume' }}.png"
+      src="/packagePlayer/assets/images/player/play_{{ playing ? 'pause': 'resume' }}.png"
       bind:tap="handleTogglePlayStatus"
     />
     <image
       class="btn btn-next"
-      src="/assets/images/player/play_next.png"
+      src="/packagePlayer/assets/images/player/play_next.png"
       bind:tap="handleToggleSong"
       data-click="next"
     />
-    <image class="btn btn-music" src="/assets/images/player/play_music.png" />
+    <image class="btn btn-music" src="/packagePlayer/assets/images/player/play_music.png" />
   </view>
 </view>
