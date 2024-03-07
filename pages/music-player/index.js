@@ -1,4 +1,4 @@
-import {  BehaviorWithStore } from 'mobx-miniprogram-bindings';
+import { BehaviorWithStore } from 'mobx-miniprogram-bindings';
 import { playerStore } from '../../stores/player';
 
 const app = getApp();
@@ -7,7 +7,7 @@ const storeBehavior = BehaviorWithStore({
   storeBindings: {
     store: playerStore,
     fields: ['currentSong'],
-    actions: ['fetchSongWithId', 'fetchSongLyric', 'setCurrentTime', 'clearCurrentLyric']
+    actions: ['fetchSongWithId', 'fetchSongLyric']
   }
 });
 
@@ -21,8 +21,10 @@ Page({
 
   onLoad(options) {
     this.setData({ contentHeight: app.globalData.windowHeight });
-    this.fetchSongWithId(options.id);
-    this.fetchSongLyric(options.id);
+    if (options.id) {
+      this.fetchSongWithId(options.id);
+      this.fetchSongLyric(options.id);
+    }
   },
 
   onTabTitleChange(e) {

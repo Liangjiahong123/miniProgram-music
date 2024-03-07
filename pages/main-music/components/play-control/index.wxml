@@ -1,0 +1,24 @@
+<view class="control-placeholder" wx:if="{{currentSong.id}}"></view>
+
+<view class="control-container" wx:if="{{currentSong.id}}" bind:tap="handleNavToPlayer">
+  <view class="left">
+    <image
+      class="avatar avatar-animate"
+      src="{{currentSong.al.picUrl}}"
+      style="animation-play-state:{{playing?'running ':'paused'}};"
+      mode="aspectFill"
+    />
+
+    <view class="song-name">{{currentSong.name}}</view>
+  </view>
+  <view class="middle">{{currentLyric.text}}</view>
+  <view class="right">
+    <image
+      class="icon play"
+      src="/assets/images/music/{{playing?'pause':'play'}}_icon.png"
+      mode="widthFix"
+      catch:tap="handleTogglePlayStatus"
+    />
+    <image class="icon list" src="/assets/images/music/playlist_icon.png" mode="widthFix" />
+  </view>
+</view>

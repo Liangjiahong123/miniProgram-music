@@ -28,11 +28,6 @@ ComponentWithStore({
   },
 
   observers: {
-    currentSong(newVal) {
-      if (!newVal.id) return;
-      this.playSong();
-    },
-
     playModeIndex(newVal) {
       if (newVal == undefined || newVal == null) return;
       this.setData({ playMode: MODE_NAMES[newVal] });

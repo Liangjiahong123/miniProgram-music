@@ -21,6 +21,7 @@ export const playerStore = observable({
     const { songs } = await getSongDetailApi(id);
     this.currentSong = songs[0] || {};
     this.durationTime = songs[0].dt || 0;
+    this.playSong(id);
   }),
 
   fetchSongLyric: action(async function (id) {
@@ -29,10 +30,9 @@ export const playerStore = observable({
     this.lyricData = lyricData;
   }),
 
-  playSong: action(function () {
-    if (!this.currentSong.id) return;
+  playSong: action(function (id) {
     audioContext.stop();
-    audioContext.src = createAudioSrc(this.currentSong.id);
+    audioContext.src = createAudioSrc(id);
     audioContext.autoplay = true;
     this.playing = true;
 
