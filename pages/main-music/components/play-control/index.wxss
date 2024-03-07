@@ -1,0 +1,66 @@
+.control-placeholder {
+  height: 100rpx;
+}
+.control-container {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 88rpx;
+  background-color: #fff;
+  padding: 0 24rpx;
+}
+.left {
+  display: flex;
+  align-items: center;
+}
+.left .avatar {
+  position: relative;
+  top: -16rpx;
+  width: 88rpx;
+  height: 88rpx;
+  border-radius: 50%;
+  margin-right: 16rpx;
+}
+.left .song-name {
+  font-size: 30rpx;
+  color: #333;
+}
+.middle {
+  font-size: 30rpx;
+  color: #00aa00;
+  flex: 1;
+  padding: 0 16rpx;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.right {
+  display: flex;
+  align-items: center;
+}
+.right .icon {
+  width: 60rpx;
+}
+.right .icon.play {
+  width: 50rpx;
+  height: 50rpx;
+  margin-right: 10rpx;
+}
+
+@keyframes albumRotate {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+.avatar-animate {
+  animation: albumRotate 16s linear infinite;
+}
